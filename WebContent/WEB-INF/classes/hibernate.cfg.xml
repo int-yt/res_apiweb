@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<property name="connection.url">
+		jdbc:sqlserver://localhost:1433;database=test
+	</property>
+	<property name="dialect">
+		org.hibernate.dialect.SQLServerDialect
+	</property>
+	<property name="myeclipse.connection.profile">
+		MyEclipse Derby
+	</property>
+	<property name="connection.username">sa</property>
+	<property name="connection.password">123456</property>
+	<property name="connection.driver_class">
+		com.microsoft.sqlserver.jdbc.SQLServerDriver
+	</property>
+	
+	 <property name="show_sql">true</property>
+
+	<property name="c3p0.max_size">10</property>
+	<property name="c3p0.min_size">2</property>
+	<property name="c3p0.timeout">90</property>
+	<property name="c3p0.idle_test_period">600</property>
+		
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Aboutus.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Aboutustype.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Admin.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Config.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Contactus.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Job.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Link.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Mass.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9News.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Newtype.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Object.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Objecttype.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Product.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Producttype.hbm.xml" />
+	<mapping resource="com/use9/frame/hibernate/pojo/Use9Vip.hbm.xml" />
+
+</session-factory>
+
+</hibernate-configuration>

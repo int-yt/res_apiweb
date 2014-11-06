@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<data-sources />
+	<form-beans>
+		<form-bean name="myForm" type="com.use9.frame.struts.MyForm" />
+		<form-bean name="myForm1" type="com.use9.frame.struts.form.MyForm1"></form-bean>
+	</form-beans>
+	<global-exceptions />
+	<global-forwards />
+
+	<action-mappings>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/ad"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_AdminAction">
+		</action>
+		<action name="myForm1" parameter="test" path="/test"
+			scope="request" type="com.use9.frame.struts.admin.action.MyAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/ab"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_AboutAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9"
+			path="/admin/conf" scope="request"
+			type="com.use9.frame.struts.admin.action.Use9_ConfigAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/abt"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_AboutTypeAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9"
+			path="/admin/cont" scope="request"
+			type="com.use9.frame.struts.admin.action.Use9_ContactAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/j"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_JobAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/l"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_LinkAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/m"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_MassAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/n"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_NewsAction">
+			<forward name="success" path="/use9_admin/Use9_News.jsp"
+				redirect="true" />
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/nt"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_NewTypeAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/o"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_ObjectAction">
+			<forward name="success" path="/use9_admin/Use9_Items.jsp"
+				redirect="true" />
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/ot"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_ObjectTypeAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/p"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_ProductAction">
+			<forward name="success" path="/use9_admin/Use9_Cp.jsp"
+				redirect="true" />
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/pt"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_ProductTypeAction">
+		</action>
+		<action attribute="myForm" name="myForm" parameter="use9" path="/admin/v"
+			scope="request" type="com.use9.frame.struts.admin.action.Use9_VipAction">
+		</action>
+
+		<action attribute="myForm" name="myForm" parameter="use9" path="/lo"
+			scope="request" type="com.use9.log.filter.CheckLogin">
+			<forward name="success" path="/use9_admin/Use9_Index.jsp"
+				redirect="true" />
+			<forward name="filed" path="/index.jsp" redirect="true" />
+		</action>
+	</action-mappings>
+	<message-resources parameter="com.use9.frame.struts.ApplicationResources" />
+</struts-config>
+
