@@ -1,7 +1,7 @@
 package com.use9.log.filter;
 
-import com.use9.frame.hibernate.pojo.Use9Admin;
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -10,7 +10,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.use9.frame.hibernate.pojo.Use9Admin;
 
 public class CheckAdmin
   implements Filter

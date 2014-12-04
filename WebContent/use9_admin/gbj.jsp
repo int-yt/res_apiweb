@@ -4,7 +4,7 @@
 <jsp:include page="inc/Use9_Head.jsp"></jsp:include>
 <jsp:include page="task_common.jsp" flush="true" />
 <FORM id=taskForm action="" method=post>
-	货号 <input name="period" type="text" id="hh" /><input name="valid"
+	订单编号 <input name="period" type="text" id="hh" /><input name="valid"
 		type="button" value="搜索" onClick="search()" /><input name="valid"
 		type="button" value="提交失败" onClick="modifyAll()" />
 </FORM>
@@ -15,7 +15,7 @@
 	function search() {
 		var hh = $("#hh").val();
 		$.ajax({
-			url : 'sp_deal.jsp', //后台处理程序			
+			url : 'gbj_deal.jsp', //后台处理程序			
 			type : 'post', //数据发送方式
 			data : {
 				action : "search",
@@ -32,7 +32,7 @@
 	//重新提交所有失败
 	function modifyAll() {
 		$.ajax({
-			url : 'sp_deal.jsp', //后台处理程序			
+			url : 'gbj_deal.jsp', //后台处理程序			
 			type : 'post', //数据发送方式
 			data : {
 				action : "modifyAll",
@@ -64,7 +64,7 @@
 		var taskId = $("#task_id").val();
 		page = pageNum;
 		$.ajax({
-			url : 'sp_deal.jsp', //后台处理程序			
+			url : 'gbj_deal.jsp', //后台处理程序			
 			type : 'post', //数据发送方式
 			data : {
 				action : "query",
@@ -85,7 +85,7 @@
 	//显示明细
 	function showResult(json) {
 		//清空显示数据
-		$("#sp_table tr").eq(0).nextAll().remove();
+		$("#gbj_table tr").eq(0).nextAll().remove();
 		$("#pagecount").empty();
 
 		var list = json.list;
@@ -115,18 +115,15 @@
 					}
 					tr += "<tr bgColor=" + bgColor + "><td>"
 							+ array['id'] + "</td>" + "<td>"
-							+ array['hh'] + "</td>" + "<td>"
-							+ array['mc'] + "</td>" + "<td>"
-							+ array['zl'] + "</td>" + "<td>"
-							+ array['je'] + "</td>" + "<td>"
-							+ array['tm'] + "</td>" + "<td>"
+							+ array['tradeNO'] + "</td>" + "<td>"
+							+ array['flag'] + "</td>" + "<td>"
 							+ array['updateTime'] + "</td>" + "<td>" + zt
 							+ "</td>" + "<td>" + array['apiTime'] + "</td>"
 							+ "<td>" + array['hk'] + "</td>" + "<td>"
 							+ array['hkmsg'] + "</td>" + "<td>"
 							+ btnStatus + "</td></tr>";
 				});
-		$("#sp_table").append(tr);
+		$("#gbj_table").append(tr);
 	}
 
 	//获取分页条 
@@ -159,13 +156,12 @@
 		$("#pagecount").html(pageStr);
 
 	}
-
 	//重新提交
 	$("body").on("click", ".btnStatus", function() {
 		var curTr = $(this).parent().parent();
 		var id = curTr.find("td").eq(0).text();
 		$.ajax({
-			url : 'sp_deal.jsp', //后台处理程序			
+			url : 'gbj_deal.jsp', //后台处理程序			
 			type : 'post', //数据发送方式
 			data : {
 				action : "modify",
@@ -173,11 +169,10 @@
 			},
 			dataType : 'json', //接受数据格式
 			success : function(json) {
-				alert(json.code);
 				if (json.code == 0) {
-					curTr.find("td").eq(7).text("未提交");
-					curTr.find("td").eq(6).text(json.update_time);
-					curTr.find("td").eq(11).find("button").attr('disabled','disabled');
+					curTr.find("td").eq(4).text("未提交");
+					curTr.find("td").eq(3).text(json.update_time);
+					curTr.find("td").eq(8).find("button").attr('disabled','disabled');
 				} else {
 					alert('修改状态失败');
 				}
@@ -190,46 +185,37 @@
 </script>
 <input type="hidden" id="task_id"
 	value='<%=request.getParameter("id")%>'>
-<TABLE class=table_southidc cellSpacing=1 cellPadding=2 width=1200
+<TABLE class=table_southidc cellSpacing=1 cellPadding=2 width=1000
 	border=0>
 	<TBODY>
 		<TR class=tr_southidc>
 
 			<TD>
-				<TABLE id="sp_table" width="100%" align=center border=0 border=0>
+				<TABLE id="gbj_table" width="100%" align=center border=0 border=0>
 					<TBODY>
 						<TR bgColor=#a4b6d7>
 							<TD width="5%" height=25>
 								<DIV align=center>ID</DIV>
 							</TD>
-							<TD width="7%">
-								<DIV align=center>货号</DIV>
-							</TD>
-							<TD width="7%">
-								<DIV align=center>商品名称</DIV>
-							</TD>
-							<TD width="7%">
-								<DIV align=center>重量</DIV>
-							</TD>
-							<TD width="7%">
-								<DIV align=center>金额</DIV>
-							</TD>
-							<TD width="7%">
-								<DIV align=center>条码</DIV>
+							<TD width="10%">
+								<DIV align=center>订单编号</DIV>
 							</TD>
 							<TD width="10%">
+								<DIV align=center>标记</DIV>
+							</TD>
+							<TD width="15%">
 								<DIV align=center>插入时间</DIV>
 							</TD>
 							<TD width="10%">
 								<DIV align=center>状态</DIV>
 							</TD>
-							<TD width="10%">
+							<TD width="15%">
 								<DIV align=center>提交API时间</DIV>
 							</TD>
 							<TD width="5%">
 								<DIV align=center>返回值</DIV>
 							</TD>
-							<TD width="8%">
+							<TD width="10%">
 								<DIV align=center>返回信息</DIV>
 							</TD>
 							<TD width="10%">

@@ -44,8 +44,8 @@
 			<column name="md5" />
 		</property>
 	</class>
-	<class name="com.use9.frame.hibernate.pojo.ApiKcb"
-		table="API_KCB" catalog="dbo" dynamic-update="true">
+	<class name="com.use9.frame.hibernate.pojo.ApiKcb" table="API_KCB"
+		catalog="dbo" dynamic-update="true">
 		<id name="id" type="java.lang.Integer">
 			<column name="Id" />
 			<generator class="identity" />
@@ -75,8 +75,8 @@
 			<column name="HKMSG" />
 		</property>
 	</class>
-	<class name="com.use9.frame.hibernate.pojo.ApiSp"
-		table="API_SP" catalog="dbo" dynamic-update="true">
+	<class name="com.use9.frame.hibernate.pojo.ApiSp" table="API_SP"
+		catalog="dbo" dynamic-update="true">
 		<id name="id" type="java.lang.Integer">
 			<column name="Id" />
 			<generator class="identity" />
@@ -112,4 +112,168 @@
 			<column name="HKMSG" />
 		</property>
 	</class>
+	<class name="com.use9.frame.hibernate.pojo.ApiGwl" table="API_GWL"
+		catalog="dbo" dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="tradeNO" type="java.lang.String">
+			<column name="TradeNO" />
+		</property>
+		<property name="logisticsCode" type="java.lang.String">
+			<column name="LogisticsCode" />
+		</property>
+		<property name="updateTime" type="java.util.Date">
+			<column name="UPDATETIME" />
+		</property>
+		<property name="zt" type="java.lang.Integer">
+			<column name="ZT" />
+		</property>
+		<property name="apiTime" type="java.util.Date">
+			<column name="APITIME" />
+		</property>
+		<property name="hk" type="java.lang.Integer">
+			<column name="HK" />
+		</property>
+		<property name="hkmsg" type="java.lang.String">
+			<column name="HKMSG" />
+		</property>
+	</class>
+	<class name="com.use9.frame.hibernate.pojo.ApiGbj" table="API_Gbj"
+		catalog="dbo" dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="tradeNO" type="java.lang.String">
+			<column name="TradeNO" />
+		</property>
+		<property name="flag" type="java.lang.String">
+			<column name="Flag" />
+		</property>
+		<property name="updateTime" type="java.util.Date">
+			<column name="UPDATETIME" />
+		</property>
+		<property name="zt" type="java.lang.Integer">
+			<column name="ZT" />
+		</property>
+		<property name="apiTime" type="java.util.Date">
+			<column name="APITIME" />
+		</property>
+		<property name="hk" type="java.lang.Integer">
+			<column name="HK" />
+		</property>
+		<property name="hkmsg" type="java.lang.String">
+			<column name="HKMSG" />
+		</property>
+	</class>
+
+	<class name="com.use9.frame.hibernate.pojo.ApiTradeList" table="API_TradeList"
+		catalog="dbo" dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="tradeNo" type="java.lang.String">
+			<column name="TradeNO" />
+		</property>
+		<property name="regTime" type="java.util.Date">
+			<column name="RegTime" />
+		</property>
+		<property name="tradeTime" type="java.util.Date">
+			<column name="TradeTime" />
+		</property>
+		<property name="payTime" type="java.util.Date">
+			<column name="PayTime" />
+		</property>
+		<property name="chkTime" type="java.util.Date">
+			<column name="ChkTime" />
+		</property>
+		<property name="stockOutTime" type="java.util.Date">
+			<column name="StockOutTime" />
+		</property>
+		<property name="sndTime" type="java.util.Date">
+			<column name="SndTime" />
+		</property>
+		<property name="lastModifyTime" type="java.util.Date">
+			<column name="LastModifyTime" />
+		</property>
+		<property name="tradeStatus" type="java.lang.String">
+			<column name="TradeStatus" />
+		</property>
+		<property name="nickName" type="java.lang.String">
+			<column name="NickName" />
+		</property>
+		<property name="shopName" type="java.lang.String">
+			<column name="ShopName" />
+		</property>
+		<property name="tradeFlag" type="java.lang.String">
+			<column name="TradeFlag" />
+		</property>
+	</class>
+	<class name="com.use9.frame.hibernate.pojo.ApiYsTradeList" table="API_YS_TradeList"
+		catalog="dbo" dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="tradeNo" type="java.lang.String">
+			<column name="TradeNO" />
+		</property>
+		<property name="nickName" type="java.lang.String">
+			<column name="NickName" />
+		</property>
+		<property name="customerName" type="java.lang.String">
+			<column name="CustomerName" />
+		</property>
+		<property name="createTime" type="java.util.Date">
+			<column name="CreateTime" />
+		</property>
+	</class>
+	<class name="com.use9.frame.hibernate.pojo.ApiDygx" table="API_DYGX"
+		catalog="dbo" dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="numIid" type="java.lang.String">
+			<column name="NumIID" />
+		</property>
+		<property name="title" type="java.lang.String">
+			<column name="Title" />
+		</property>
+		<property name="outerId" type="java.lang.String">
+			<column name="OuterID" />
+		</property>
+		<property name="skuIName" type="java.lang.String">
+			<column name="SkuName" />
+		</property>
+		<property name="skuOuterID" type="java.lang.String">
+			<column name="SkuOuterID" />
+		</property>
+	</class>
+	<class name="com.use9.frame.hibernate.pojo.StreamSeaPinck" table="StreamSea_Pincking_AutoWeigh"
+		catalog="dbo" dynamic-update="true">
+		<id name="id" type="java.lang.Integer">
+			<column name="TransId" />
+			<generator class="native" />
+		</id>
+		<property name="ExpressCompanyId" type="java.lang.Integer">
+			<column name="ExpressCompanyId" />
+		</property>
+		<property name="ExpressOutId" type="java.lang.String">
+			<column name="ExpressOutId" />
+		</property>
+		<property name="ItemWeight" type="java.math.BigDecimal">
+			<column name="ItemWeight" />
+		</property>
+		<property name="userId" type="java.lang.String">
+			<column name="UserId" />
+		</property>
+		<property name="saveDate" type="java.util.Date">
+			<column name="SaveDate" />
+		</property>
+	</class>
+
 </hibernate-mapping>

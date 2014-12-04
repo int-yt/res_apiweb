@@ -22,7 +22,7 @@
 	
 	 <property name="show_sql">true</property>
 
-	<property name="c3p0.max_size">10</property>
+	<property name="c3p0.max_size">30</property>
 	<property name="c3p0.min_size">2</property>
 	<property name="c3p0.timeout">90</property>
 	<property name="c3p0.idle_test_period">600</property>

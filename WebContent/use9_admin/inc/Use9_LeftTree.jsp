@@ -185,12 +185,12 @@ background=../files/menudown.gif height=25>
 									</TR>
 									<TR>
 										<TD>
-											<A href="../Use9_Aboutus.jsp" target=main>改快递上传</A>
+											<A href="../gwl.jsp?id=11" target=main>改快递上传</A>
 										</TD>
 									</TR>
 									<TR>
 										<TD>
-											<A href="../Use9_Cp.jsp" target=main><FONT color=#000000>改标签上传</FONT>
+											<A href="../gbj.jsp?id=9" target=main><FONT color=#000000>改标签上传</FONT>
 											</A>
 										</TD>
 									</TR>
@@ -220,25 +220,19 @@ background=../files/menudown.gif height=25>
 								<TBODY>
 									<TR>
 										<TD>
-											<A href="../Use9_CpType.jsp" target=main><FONT
-												color=#000000>库存上传</FONT> </A>
+											<A href="../trade_list.jsp?id=6" target=main><FONT
+												color=#000000>订单信息下载</FONT> </A>
 										</TD>
 									</TR>
 									<TR>
 										<TD>
-											<A href="../Use9_CpAdd.jsp" target=main><FONT
-												color=#000000>商品档案上传</FONT> </A>
+											<A href="../ystrade_list.jsp?id=14" target=main><FONT
+												color=#000000>原始订单信息下载</FONT> </A>
 										</TD>
 									</TR>
 									<TR>
 										<TD>
-											<A href="../Use9_Cp.jsp" target=main><FONT color=#000000>改快递上传</FONT>
-											</A>
-										</TD>
-									</TR>
-									<TR>
-										<TD>
-											<A href="../Use9_Cp.jsp" target=main><FONT color=#000000>改标签上传</FONT>
+											<A href="../dygx.jsp?id=16" target=main><FONT color=#000000>货品下载</FONT>
 											</A>
 										</TD>
 									</TR>

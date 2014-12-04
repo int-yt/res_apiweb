@@ -14,34 +14,36 @@
 		if (request.getParameter("action").equals("query")) {
 			int taskId = Integer.parseInt(request.getParameter("id"));
 			Configuration config1 = new Configuration();
-			SessionFactory sf = config1.configure().buildSessionFactory();
+			SessionFactory sf = config1.configure()
+					.buildSessionFactory();
 			Session session1 = sf.openSession();
-			String hql = "from ApiSp as api_sp order by apiTime desc";
+			String hql = "from ApiGwl as api_gwl order by apiTime desc";
 			Query query = session1.createQuery(hql);
 			query.setFirstResult(0);
 			query.setMaxResults(1000);
-			int curPage = Integer.parseInt(request.getParameter("pageNum"));
+			int curPage = Integer.parseInt(request
+					.getParameter("pageNum"));
 			int pageSize = 15; //每页显示数 
 			int total = query.list().size(); //总条数
-			int totalPage = (int)Math.ceil(total/pageSize); //总页数
-			int startPage = (curPage-1) *pageSize;   
+			int totalPage = (int) Math.ceil(total / pageSize); //总页数
+			int startPage = (curPage - 1) * pageSize;
 			//查询明细
 			query = session1.createQuery(hql);
 			query.setFirstResult(startPage);
 			query.setMaxResults(pageSize);
-			List<ApiSp> list = query.list();
+			List<ApiGwl> list = query.list();
 			net.sf.json.JSONArray jsonArray = net.sf.json.JSONArray
 					.fromObject(list);
-			
+
 			session1.close();
 			JsonConfig jf = new JsonConfig();
 			jf.registerJsonValueProcessor(java.util.Date.class,
 					new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));//时间格式转换
 			JSONArray newjsonArray = jsonArray.fromObject(list,jf);
 			jsonObj.put("list", newjsonArray);
-			jsonObj.put("total",total);
-			jsonObj.put("pageSize",pageSize);
-			jsonObj.put("totalPage",totalPage);
+			jsonObj.put("total", total);
+			jsonObj.put("pageSize", pageSize);
+			jsonObj.put("totalPage", totalPage);
 			out.println(jsonObj.toString());
 		} else if (request.getParameter("action").equals("modify")) {
 			int taskId = Integer.parseInt(request.getParameter("id"));
@@ -53,12 +55,11 @@
 					.buildSessionFactory();
 			Session session1 = sf.openSession();
 			session1.getTransaction().begin();
-			ApiSp apiSp = (ApiSp) session1
-					.get(ApiSp.class, taskId);
-			apiSp.setZt(0);
-			apiSp.setUpdateTime(new Date());
+			ApiGwl apiGwl = (ApiGwl) session1.get(ApiGwl.class, taskId);
+			apiGwl.setZt(0);
+			apiGwl.setUpdateTime(new Date());
 			try {
-				session1.update(apiSp);
+				session1.update(apiGwl);
 				session1.getTransaction().commit();
 				session1.close();
 				jsonObj.put("code", "0");
@@ -72,12 +73,13 @@
 		} else if (request.getParameter("action").equals("search")) {
 			String hh = request.getParameter("hh");
 			Configuration config1 = new Configuration();
-			SessionFactory sf = config1.configure().buildSessionFactory();
+			SessionFactory sf = config1.configure()
+					.buildSessionFactory();
 			Session session1 = sf.openSession();
-			String hql = "from ApiSp as api_sp where hh =:hh";
+			String hql = "from ApiGwl as Api_gwl where TradeNO =:hh";
 			Query query = session1.createQuery(hql);
 			query.setString("hh", hh);
-			List<ApiSp> list = query.list();
+			List<ApiGwl> list = query.list();
 			net.sf.json.JSONArray jsonArray = net.sf.json.JSONArray
 					.fromObject(list);
 			int pageSize = 1; //每页显示数 
@@ -88,9 +90,9 @@
 					new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));//时间格式转换
 			JSONArray newjsonArray = jsonArray.fromObject(list,jf);
 			jsonObj.put("list", newjsonArray);
-			jsonObj.put("total",total);
-			jsonObj.put("pageSize",pageSize);
-			jsonObj.put("totalPage",1);
+			jsonObj.put("total", total);
+			jsonObj.put("pageSize", pageSize);
+			jsonObj.put("totalPage", 1);
 			out.println(jsonObj.toString());
 		} else if (request.getParameter("action").equals("modifyAll")) {
 			Date updateTime = new Date();
@@ -101,10 +103,10 @@
 					.buildSessionFactory();
 			Session session1 = sf.openSession();
 			session1.getTransaction().begin();
-			String hql = "update ApiSp set zt = 0,updateTime= :newDate where zt =1 and hk !=0";
+			String hql = "update ApiGwl set zt = 0,updateTime= :newDate where zt =1 and hk !=0";
 			Query query = session1.createQuery(hql);
 			query.setDate("newDate", new Date());
-			int ret=query.executeUpdate();
+			int ret = query.executeUpdate();
 			session1.getTransaction().commit();
 			System.out.println(ret);
 

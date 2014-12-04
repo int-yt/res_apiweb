@@ -1,11 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ page language="java" import="net.sf.json.JSONObject"%>
+<%@ page language="java" import="net.sf.json.*"%>
 <%@ page language="java" import="java.text.*"%>
 
 <%@ page language="java" import="org.hibernate.*"%>
 <%@ page language="java" import="org.hibernate.cfg.Configuration"%>
 <%@ page language="java" import="org.hibernate.classic.Session"%>
 <%@ page language="java" import="com.use9.frame.hibernate.pojo.*"%>
+<%@ page language="java" import="com.use9.util.DateJsonValueProcessor"%>
 
 <%
 	JSONObject jsonObj = new JSONObject();
@@ -33,7 +34,11 @@
 					.fromObject(list);
 			
 			session1.close();
-			jsonObj.put("list",jsonArray);
+			JsonConfig jf = new JsonConfig();
+			jf.registerJsonValueProcessor(java.util.Date.class,
+					new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));//时间格式转换
+			JSONArray newjsonArray = jsonArray.fromObject(list,jf);
+			jsonObj.put("list", newjsonArray);
 			jsonObj.put("total",total);
 			jsonObj.put("pageSize",pageSize);
 			jsonObj.put("totalPage",totalPage);
@@ -78,7 +83,11 @@
 			int pageSize = 1; //每页显示数 
 			int total = query.list().size(); //总条数
 			session1.close();
-			jsonObj.put("list",jsonArray);
+			JsonConfig jf = new JsonConfig();
+			jf.registerJsonValueProcessor(java.util.Date.class,
+					new DateJsonValueProcessor("yyyy-MM-dd HH:mm:ss"));//时间格式转换
+			JSONArray newjsonArray = jsonArray.fromObject(list,jf);
+			jsonObj.put("list", newjsonArray);
 			jsonObj.put("total",total);
 			jsonObj.put("pageSize",pageSize);
 			jsonObj.put("totalPage",1);

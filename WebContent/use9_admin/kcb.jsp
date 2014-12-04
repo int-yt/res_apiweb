@@ -102,20 +102,6 @@
 					} else {
 						bgColor = '#f1f5f8';
 					}
-					var apiTimeJson = array['apiTime'];
-					var updateTimeJson = array['updateTime'];
-					var apiTime = "";
-					var updateTime = "";
-					if (apiTimeJson != null) {
-						var real_time = new Date(apiTimeJson.time)
-						apiTime = real_time
-								.format('yyyy-MM-dd hh:mm:ss');
-					}
-					if (updateTimeJson != null) {
-						var real_time = new Date(updateTimeJson.time)
-						updateTime = real_time
-								.format('yyyy-MM-dd hh:mm:ss');
-					}
 					if (array['zt'] == 1) {
 						zt = "已提交";
 					} else {
@@ -132,8 +118,8 @@
 							+ array['ckdm'] + "</td>" + "<td>"
 							+ array['hh'] + "</td>" + "<td>"
 							+ array['kcs'] + "</td>" + "<td>"
-							+ updateTime + "</td>" + "<td>" + zt
-							+ "</td>" + "<td>" + apiTime + "</td>"
+							+ array['updateTime'] + "</td>" + "<td>" + zt
+							+ "</td>" + "<td>" + array['apiTime'] + "</td>"
 							+ "<td>" + array['hk'] + "</td>" + "<td>"
 							+ array['hkmsg'] + "</td>" + "<td>"
 							+ btnStatus + "</td></tr>";
@@ -170,29 +156,6 @@
 
 		$("#pagecount").html(pageStr);
 
-	}
-	Date.prototype.format = function(format) {
-		var date = {
-			"M+" : this.getMonth() + 1,
-			"d+" : this.getDate(),
-			"h+" : this.getHours(),
-			"m+" : this.getMinutes(),
-			"s+" : this.getSeconds(),
-			"q+" : Math.floor((this.getMonth() + 3) / 3),
-			"S+" : this.getMilliseconds()
-		};
-		if (/(y+)/i.test(format)) {
-			format = format.replace(RegExp.$1, (this.getFullYear() + '')
-					.substr(4 - RegExp.$1.length));
-		}
-		for ( var k in date) {
-			if (new RegExp("(" + k + ")").test(format)) {
-				format = format.replace(RegExp.$1,
-						RegExp.$1.length == 1 ? date[k] : ("00" + date[k])
-								.substr(("" + date[k]).length));
-			}
-		}
-		return format;
 	}
 
 	//重新提交

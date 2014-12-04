@@ -6,6 +6,7 @@
 <%@ page language="java" import="org.hibernate.cfg.Configuration"%>
 <%@ page language="java" import="org.hibernate.classic.Session"%>
 <%@ page language="java" import="com.use9.frame.hibernate.pojo.*"%>
+<%@ page language="java" import="com.use9.util.MD5Util"%>
 
 <%
 	JSONObject jsonObj = null;
@@ -41,6 +42,8 @@
 				period = 24 * 60;
 			}
 
+			///md5
+			String md5 =MD5Util.MD5(startTime + taskType + valid +period);
 			Configuration config1 = new Configuration();
 			SessionFactory sf = config1.configure()
 					.buildSessionFactory();
@@ -52,6 +55,7 @@
 			taskInfo.setStartTime(startTimeDate);
 			taskInfo.setTaskType(taskType);
 			taskInfo.setValid(valid);
+			taskInfo.setMd5(md5);
 			try {
 				session1.update(taskInfo);
 				session1.getTransaction().commit();
